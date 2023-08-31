@@ -45,14 +45,37 @@ public class ProductController {
 		}
 		
 	}
+	
+	/* select 리턴이 있음. Product 객체 리턴
+	 * insert(등록), update(수정), delete(삭제)
+	 * 리턴은 1개의 값이 실행되었습니다. => 1
+	 * 실행이 안되었을때 => 0
+	 * */
 
 	private void remove() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("수정할 번호를 입력해주세요 >>");
+		int pno = scan.nextInt();
+		int isOk = svc.remove(pno);
+		System.out.println("상품수정" + ((isOk > 0) ? "성공" : "실패"));
 	}
 
 	private void modify() {
-		// TODO Auto-generated method stub
+		// 상품수정 pno에 해당하는 객체를 수정(pname, price, madeby)
+			System.out.println("수정할 번호를 입력해주세요 >>");
+			int pno = scan.nextInt();
+			System.out.println("상품이름 >>");
+			String pname = scan.next();
+			System.out.println("상품가격 >>");
+			int price = scan.nextInt();
+			System.out.println("상품상세내역 >>");
+			scan.nextLine(); //위쪽 공백처리
+			String madeby = scan.nextLine();
+			Product p = new Product(pno, pname, price, madeby); // 생성자 호출
+			//서비스에게 등록을 요청 메서드 작성 svc
+			int isOk = svc.modify(p);
+			//isOk : DB에서 insert되고난 후 리턴해주는 값
+			//잘되면 1을 리턴, 안되면 0을 리턴
+			System.out.println("상품수정" + ((isOk > 0) ? "성공" : "실패"));
 		
 	}
 

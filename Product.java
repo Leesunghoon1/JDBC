@@ -34,7 +34,7 @@ public class Product {
 	
 	public Product(int pno, String pname, int price, String madeby) {
 		this(pname, price, madeby);
-		this.price = price;
+		this.pno = pno;
 	}
 	
 	//상품상세 생성자 -> pno, pname, price, regdate, madeby

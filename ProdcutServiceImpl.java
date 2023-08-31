@@ -30,6 +30,18 @@ public class ProdcutServiceImpl implements Service {
 		System.out.println("list_service success!!");
 		return dao.selectOne(pno);
 	}
+
+	@Override
+	public int modify(Product p) {
+		System.out.println("list_service success!!");
+		return dao.selectModify(p);
+	}
+
+	@Override
+	public int remove(int pno) {
+		System.out.println("list_service success!!");
+		return dao.selectRemove(pno);
+	}
 	
 	
 

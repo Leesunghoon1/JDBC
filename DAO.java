@@ -10,4 +10,10 @@ public interface DAO {
 
 	Product selectOne(int pno);
 
+	int selectModify(Product p);
+
+	int selectRemove(int pno);
+	
+	
+
 }

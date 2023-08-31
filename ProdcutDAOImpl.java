@@ -88,4 +88,43 @@ public class ProdcutDAOImpl implements DAO {
 		}
 		return null;
 	}
+
+	@Override
+	public int selectModify(Product p) {
+		
+		System.out.println("update DAO success!!");
+		query =  "update product SET pname = ?, price = ?, madeby = ? WHERE pno = ?";
+		try {
+			//query구문을 받고 pst에 전달
+			pst = conn.prepareStatement(query);
+			
+			pst.setString(1, p.getPname());
+			pst.setInt(2, p.getPrice());
+			pst.setString(3, p.getMadeby());
+			pst.setInt(4, p.getPno());
+			//insert, update, delete => executeUpdate() in타입으로 return 
+			return pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("insert Error!!");
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int selectRemove(int pno) {
+		System.out.println("insert DAO success!!");
+		query =  "delete from product where pno = ?";
+		try {
+			//query구문을 받고 pst에 전달
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, pno);
+			//insert, update, delete => executeUpdate() in타입으로 return 
+			return pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("insert Error!!");
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
